@@ -52,7 +52,7 @@ namespace hpp {
          value_type curveLength, value_type pathLength,
          value_type curvature, size_type xyId, size_type rzId,
          const JointPtr_t rz, const std::vector<JointPtr_t> wheels,
-         const ConstraintSetPtr_t& constraints);
+         const ConstraintPtr_t& constraints);
 
          /// Create instance and return shared pointer.
         static ConstantCurvaturePtr_t createCopy
@@ -61,7 +61,7 @@ namespace hpp {
         /// Create instance and return shared pointer.
         static ConstantCurvaturePtr_t createCopy
         (const ConstantCurvaturePtr_t& other,
-         const ConstraintSetPtr_t& constraints);
+         const ConstraintPtr_t& constraints);
  
         /// Return a shared pointer to a copy of this
         virtual PathPtr_t copy () const;
@@ -69,7 +69,7 @@ namespace hpp {
         /// Return a shared pointer to a copy of this with constraints
         /// \param constraints constraints to apply to the copy
         /// \pre *this should not have constraints.
-        virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+        virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
         {
 	  return createCopy (weak_.lock (), constraints);
         }
@@ -132,14 +132,14 @@ namespace hpp {
                            value_type curvature, size_type xyId, size_type rzId,
                            const JointPtr_t rz,
                            const std::vector<JointPtr_t> wheels,
-                           ConstraintSetPtr_t constraints);
+                           ConstraintPtr_t constraints);
 
         /// Copy constructor
         ConstantCurvature (const ConstantCurvature& other);
 
         /// Copy constructor with constraints
         ConstantCurvature (const ConstantCurvature& other,
-                           const ConstraintSetPtr_t& constraints);
+                           const ConstraintPtr_t& constraints);
 
         virtual bool impl_compute (ConfigurationOut_t result,
                                    value_type param) const;

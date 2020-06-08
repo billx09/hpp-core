@@ -57,7 +57,7 @@ namespace hpp {
 
       /// Create instance and return shared pointer
       static PathVectorPtr_t createCopy (const PathVectorPtr_t& original,
-					 const ConstraintSetPtr_t& constraints)
+					 const ConstraintPtr_t& constraints)
       {
 	PathVector* ptr = new PathVector (*original, constraints);
 	PathVectorPtr_t shPtr (ptr);
@@ -74,7 +74,7 @@ namespace hpp {
       /// Return a shared pointer to a copy of this with constraints
       /// \param constraints constraints to apply to the copy
       /// \pre *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
       {
 	return createCopy (weak_.lock (), constraints);
       }
@@ -158,7 +158,7 @@ namespace hpp {
 
       ///Copy constructor with constraints
       PathVector (const PathVector& path,
-		  const ConstraintSetPtr_t& constraints) :
+		  const ConstraintPtr_t& constraints) :
 	parent_t (path, constraints), paths_ ()
 	  {
 	    assert (timeRange() == path.timeRange());

@@ -102,7 +102,7 @@ namespace hpp {
 
       bool RecursiveHermite::project (const PathPtr_t& path, PathPtr_t& proj) const
       {
-        ConstraintSetPtr_t constraints = path->constraints ();
+        ConstraintPtr_t constraints = path->constraints ();
 	if (!constraints) {
 	  proj = path;
 	  return true;
@@ -204,7 +204,7 @@ namespace hpp {
         if (path->hermiteLength() < acceptThr) {
           // TODO this does not work because it is not possible to remove
           // constraints from a path.
-          // proj->appendPath (path->copy (ConstraintSetPtr_t()));
+          // proj->appendPath (path->copy (ConstraintPtr_t()));
           proj->appendPath(path);
           return true;
         } else {

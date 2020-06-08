@@ -523,7 +523,7 @@ namespace hpp {
 				    value_type rho,
                                     size_type xyId, size_type rzId,
                                     const std::vector<JointPtr_t> wheels,
-				    ConstraintSetPtr_t constraints)
+				    ConstraintPtr_t constraints)
     {
       ReedsSheppPath* ptr = new ReedsSheppPath (device, init, end, extraLength,
                                                 rho, xyId, rzId, wheels, constraints);
@@ -576,7 +576,7 @@ namespace hpp {
                                     value_type rho,
                                     size_type xyId, size_type rzId,
                                     const std::vector<JointPtr_t> wheels,
-                                    ConstraintSetPtr_t constraints) :
+                                    ConstraintPtr_t constraints) :
       parent_t (device->configSize (), device->numberDof ()),
       device_ (device), initial_ (init), end_ (end),
       xyId_ (xyId), rzId_ (rzId), typeId_ (0),
@@ -602,7 +602,7 @@ namespace hpp {
     }
 
     ReedsSheppPath::ReedsSheppPath (const ReedsSheppPath& path,
-			const ConstraintSetPtr_t& constraints) :
+			const ConstraintPtr_t& constraints) :
       parent_t (path, constraints), device_ (path.device_),
       initial_ (path.initial_), end_ (path.end_),
       xyId_ (path.xyId_), rzId_ (path.rzId_),
@@ -652,7 +652,7 @@ namespace hpp {
         ConstantCurvaturePtr_t segment
           (ConstantCurvature::create (device_, qInit, end_, 0, extraLength_, 0,
                                       xyId_, rzId_, rz, wheels,
-                                      ConstraintSetPtr_t ()));
+                                      ConstraintPtr_t ()));
         appendPath (segment);
         rsLength_ = 0;
         return;
@@ -690,7 +690,7 @@ namespace hpp {
                                         rho_ * lengths_ [i],
                                         l * (1 + extraLength_ / L),
                                         curvature, xyId_, rzId_, rz, wheels,
-                                        ConstraintSetPtr_t ()));
+                                        ConstraintPtr_t ()));
           appendPath (segment);
           qInit = segment->end ();
         }

@@ -54,7 +54,7 @@ namespace hpp {
                                        vectorIn_t init,
 				       vectorIn_t end,
 				       interval_t interval,
-                                       ConstraintSetPtr_t constraints = ConstraintSetPtr_t())
+                                       ConstraintPtr_t constraints = ConstraintPtr_t())
       {
 	StraightPath* ptr;
         if (constraints)
@@ -74,7 +74,7 @@ namespace hpp {
       static StraightPathPtr_t create (LiegroupElementConstRef init,
 				       LiegroupElementConstRef end,
 				       interval_t interval,
-                                       ConstraintSetPtr_t constraints = ConstraintSetPtr_t())
+                                       ConstraintPtr_t constraints = ConstraintPtr_t())
       {
         assert (init.space() == end.space());
 	return create (init.space(), init.vector(), end.vector(), interval, constraints);
@@ -88,7 +88,7 @@ namespace hpp {
 				       ConfigurationIn_t init,
 				       ConfigurationIn_t end,
 				       value_type length,
-                                       ConstraintSetPtr_t constraints = ConstraintSetPtr_t())
+                                       ConstraintPtr_t constraints = ConstraintPtr_t())
       {
         return create (device, init, end, interval_t (0, length), constraints);
       }
@@ -102,7 +102,7 @@ namespace hpp {
 				       ConfigurationIn_t init,
 				       ConfigurationIn_t end,
 				       interval_t interval,
-                                       ConstraintSetPtr_t constraints = ConstraintSetPtr_t());
+                                       ConstraintPtr_t constraints = ConstraintPtr_t());
 
       /// Create copy and return shared pointer
       /// \param path path to copy
@@ -119,7 +119,7 @@ namespace hpp {
       /// \param path path to copy
       /// \param constraints the path is subject to
       static StraightPathPtr_t createCopy
-	(const StraightPathPtr_t& path, const ConstraintSetPtr_t& constraints)
+	(const StraightPathPtr_t& path, const ConstraintPtr_t& constraints)
       {
 	StraightPath* ptr = new StraightPath (*path, constraints);
 	StraightPathPtr_t shPtr (ptr);
@@ -141,7 +141,7 @@ namespace hpp {
       ///
       /// \param constraints constraints to apply to the copy
       /// \pre *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
       {
 	return createCopy (weak_.lock (), constraints);
       }
@@ -188,14 +188,14 @@ namespace hpp {
 
       /// Constructor
       StraightPath (LiegroupSpacePtr_t space, vectorIn_t init, vectorIn_t end,
-          interval_t interval, ConstraintSetPtr_t constraints);
+          interval_t interval, ConstraintPtr_t constraints);
 
       /// Copy constructor
       StraightPath (const StraightPath& path);
 
       /// Copy constructor with constraints
       StraightPath (const StraightPath& path,
-		    const ConstraintSetPtr_t& constraints);
+		    const ConstraintPtr_t& constraints);
 
       void init (StraightPathPtr_t self)
       {

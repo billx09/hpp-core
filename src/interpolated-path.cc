@@ -47,7 +47,7 @@ namespace hpp {
 				ConfigurationIn_t init,
 				ConfigurationIn_t end,
                                 interval_t timeRange,
-				ConstraintSetPtr_t constraints) :
+				ConstraintPtr_t constraints) :
       parent_t (timeRange, device->configSize (),
 		device->numberDof (), constraints),
       device_ (device)
@@ -90,7 +90,7 @@ namespace hpp {
     }
 
     InterpolatedPath::InterpolatedPath (const InterpolatedPath& path,
-				const ConstraintSetPtr_t& constraints) :
+				const ConstraintPtr_t& constraints) :
       parent_t (path, constraints), device_ (path.device_),
       configs_ (path.configs_)
     {

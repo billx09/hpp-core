@@ -83,14 +83,12 @@ namespace hpp {
     // Constructor with constraints
     Path::Path (const interval_t& interval, size_type outputSize,
 		size_type outputDerivativeSize,
-		const ConstraintSetPtr_t& constraints) :
+		const ConstraintPtr_t& constraints) :
       paramRange_ (interval), timeRange_ (interval), outputSize_ (outputSize),
       outputDerivativeSize_ (outputDerivativeSize), constraints_ ()
     {
-      if (constraints) {
-	constraints_ = HPP_STATIC_PTR_CAST (ConstraintSet,
-					    constraints->copy ());
-      }
+      if (constraints)
+	constraints_ = constraints->copy ();
     }
 
     // Constructor without constraints
@@ -108,15 +106,13 @@ namespace hpp {
       outputDerivativeSize_ (path.outputDerivativeSize_), constraints_ (),
       timeParam_ ()
     {
-      if (path.constraints_) {
-	constraints_ = HPP_STATIC_PTR_CAST (ConstraintSet,
-					    path.constraints_->copy ());
-      }
+      if (path.constraints_)
+	constraints_ = path.constraints_->copy ();
       if (path.timeParam_)
         timeParam_ = path.timeParam_->copy();
     }
 
-    Path::Path (const Path& path, const ConstraintSetPtr_t& constraints) :
+    Path::Path (const Path& path, const ConstraintPtr_t& constraints) :
       paramRange_ (path.paramRange_), timeRange_ (path.timeRange_),
       outputSize_ (path.outputSize_),
       outputDerivativeSize_ (path.outputDerivativeSize_),

@@ -48,7 +48,7 @@ namespace hpp {
 
           PathVectorPtr_t computePath(const RoadmapPtr_t& roadmap) const;
 
-          void constraints (const ConstraintSetPtr_t& c)
+          void constraints (const ConstraintPtr_t& c)
           {
             constraints_ = c;
           }
@@ -60,7 +60,7 @@ namespace hpp {
           {}
 
         private:
-          ConstraintSetPtr_t constraints_;
+          ConstraintPtr_t constraints_;
       }; // class TaskTarget
       /// \}
     } // namespace problemTarget

@@ -31,7 +31,7 @@ namespace hpp {
       Hermite::Hermite (const DevicePtr_t& device,
                         ConfigurationIn_t init,
                         ConfigurationIn_t end,
-                        ConstraintSetPtr_t constraints) :
+                        ConstraintPtr_t constraints) :
         parent_t (device, interval_t (0, 1), constraints),
         init_ (init), end_ (end),
         hermiteLength_ (-1)
@@ -54,7 +54,7 @@ namespace hpp {
       {}
 
       Hermite::Hermite (const Hermite& path,
-                        const ConstraintSetPtr_t& constraints) :
+                        const ConstraintPtr_t& constraints) :
         parent_t (path, constraints),
         init_ (path.init_), end_ (path.end_),
         hermiteLength_ (-1)

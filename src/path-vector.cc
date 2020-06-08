@@ -82,9 +82,7 @@ namespace hpp {
 	     "are subject to constraints. This is not supported.");
 	} else {
 	  ConstraintPtr_t constraintCopy (constraints ()->copy ());
-	  HPP_STATIC_CAST_REF_CHECK (ConstraintSet, *constraintCopy);
-	  copy = paths_ [rank]->copy (HPP_STATIC_PTR_CAST (ConstraintSet,
-							   constraintCopy));
+	  copy = paths_ [rank]->copy (constraintCopy);
 	}
       } else {
 	copy = paths_ [rank]->copy ();

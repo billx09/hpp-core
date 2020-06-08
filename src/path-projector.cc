@@ -39,7 +39,7 @@ namespace hpp {
       assert (distance_ != NULL);
       assert (steeringMethod_ != NULL);
       if (!keepSteeringMethodConstraints) {
-	steeringMethod_->constraints (ConstraintSetPtr_t ());
+	steeringMethod_->constraints (ConstraintPtr_t ());
       }
     }
 

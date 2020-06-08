@@ -42,7 +42,7 @@ namespace hpp {
       ///
       /// \param constraints constraints to apply to the copy
       /// \precond *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
       {
 	return createCopy (weak_.lock (), constraints);
       }
@@ -67,7 +67,7 @@ namespace hpp {
 
       static ExtractedPathPtr_t
       createCopy (const ExtractedPathPtr_t& path,
-		  const ConstraintSetPtr_t& constraints)
+		  const ConstraintPtr_t& constraints)
       {
 	ExtractedPath* ptr = new ExtractedPath (*path, constraints);
 	ExtractedPathPtr_t shPtr (ptr);
@@ -171,7 +171,7 @@ namespace hpp {
       }
 
       ExtractedPath (const ExtractedPath& path,
-		     const ConstraintSetPtr_t& constraints) : 
+		     const ConstraintPtr_t& constraints) : 
 	Path (path, constraints), original_ (path.original_),
 	reversed_ (path.reversed_), weak_ ()
       {

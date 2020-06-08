@@ -77,7 +77,7 @@ namespace hpp {
                                    value_type rho,
                                    size_type xyId, size_type rzId,
                                    const std::vector<JointPtr_t> wheels,
-				   ConstraintSetPtr_t constraints);
+				   ConstraintPtr_t constraints);
 
       /// Create copy and return shared pointer
       /// \param path path to copy
@@ -93,7 +93,7 @@ namespace hpp {
       /// \param path path to copy
       /// \param constraints the path is subject to
       static ReedsSheppPathPtr_t createCopy
-	(const ReedsSheppPathPtr_t& path, const ConstraintSetPtr_t& constraints)
+	(const ReedsSheppPathPtr_t& path, const ConstraintPtr_t& constraints)
       {
 	ReedsSheppPath* ptr = new ReedsSheppPath (*path, constraints);
 	ReedsSheppPathPtr_t shPtr (ptr);
@@ -111,7 +111,7 @@ namespace hpp {
       ///
       /// \param constraints constraints to apply to the copy
       /// \pre *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
       {
 	return createCopy (weak_.lock (), constraints);
       }
@@ -149,14 +149,14 @@ namespace hpp {
                       ConfigurationIn_t end, value_type extraLength,
                       value_type rho, size_type xyId, size_type rzId,
                       const std::vector<JointPtr_t> wheels,
-		      ConstraintSetPtr_t constraints);
+		      ConstraintPtr_t constraints);
 
       /// Copy constructor
       ReedsSheppPath (const ReedsSheppPath& path);
 
       /// Copy constructor with constraints
       ReedsSheppPath (const ReedsSheppPath& path,
-		    const ConstraintSetPtr_t& constraints);
+		    const ConstraintPtr_t& constraints);
 
       void init (ReedsSheppPathPtr_t self);
 

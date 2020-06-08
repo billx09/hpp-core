@@ -74,7 +74,7 @@ namespace hpp {
       ///
       /// \param constraints constraints to apply to the copy
       /// \pre *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const = 0;
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const = 0;
 
       /// Static cast into a derived type
       template <class T> boost::shared_ptr<T> as (void)
@@ -225,7 +225,7 @@ namespace hpp {
       virtual Configuration_t end () const = 0;
 
       /// Get constraints the path is subject to
-      const ConstraintSetPtr_t& constraints () const
+      const ConstraintPtr_t& constraints () const
       {
 	return constraints_;
       }
@@ -272,7 +272,7 @@ namespace hpp {
       /// \note Constraints are copied.
       Path (const interval_t& interval, size_type outputSize,
 	    size_type outputDerivativeSize,
-	    const ConstraintSetPtr_t& constraints);
+	    const ConstraintPtr_t& constraints);
 
       /// Constructor
       /// \param interval interval of definition of the path,
@@ -286,7 +286,7 @@ namespace hpp {
       Path (const Path& path);
 
       /// Copy constructor with constraints
-      Path (const Path& path, const ConstraintSetPtr_t& constraints);
+      Path (const Path& path, const ConstraintPtr_t& constraints);
 
       /// Store weak pointer to itself
       ///
@@ -300,7 +300,7 @@ namespace hpp {
       /// \warning this method is protected for child classes that need to
       ///          initialize themselves before being sure that the initial and
       ///          end configuration satisfy the constraints
-      void constraints (const ConstraintSetPtr_t& constraint) {
+      void constraints (const ConstraintPtr_t& constraint) {
         constraints_ = constraint;
       }
 
@@ -391,7 +391,7 @@ namespace hpp {
       /// Number of degrees of freedom of the robot
       size_type outputDerivativeSize_;
       /// Constraints that apply to the robot
-      ConstraintSetPtr_t constraints_;
+      ConstraintPtr_t constraints_;
       /// Time parameterization
       TimeParameterizationPtr_t timeParam_;
       /// Weak pointer to itself

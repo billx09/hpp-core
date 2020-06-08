@@ -113,7 +113,7 @@ namespace hpp {
 
       bool Progressive::project (const PathPtr_t& path, PathPtr_t& proj) const
       {
-        ConstraintSetPtr_t constraints = path->constraints ();
+        ConstraintPtr_t constraints = path->constraints ();
 	if (!constraints) {
 	  proj = path;
 	  return true;

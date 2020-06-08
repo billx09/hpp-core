@@ -461,7 +461,7 @@ namespace hpp {
       }
 
       bool Global::createPath (const DevicePtr_t& robot,
-          const ConstraintSetPtr_t& constraint,
+          const ConstraintPtr_t& constraint,
           const Configs_t& q, const Configs_t::iterator&,
           const Bools_t& b, const Lengths_t& l, PathPtr_t& result) const
       {
@@ -530,7 +530,7 @@ namespace hpp {
       }
 
       bool Global::createPath (const DevicePtr_t& robot,
-          const ConstraintSetPtr_t& constraint,
+          const ConstraintPtr_t& constraint,
           const Datas_t& ds, const Datas_t::iterator& last, PathPtr_t& result) const
       {
         /// Compute total length

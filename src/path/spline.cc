@@ -275,7 +275,7 @@ namespace hpp {
       {}
 
       template <int _SplineType, int _Order>
-      Spline<_SplineType, _Order>::Spline (const Spline& path, const ConstraintSetPtr_t& constraints) :
+      Spline<_SplineType, _Order>::Spline (const Spline& path, const ConstraintPtr_t& constraints) :
         Path (path, constraints),
         parameterSize_ (path.parameterSize_),
         robot_ (path.robot_),

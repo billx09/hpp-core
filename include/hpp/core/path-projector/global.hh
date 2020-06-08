@@ -92,13 +92,13 @@ namespace hpp {
               ConfigProjector& p, Datas_t& q, Datas_t::iterator& last) const;
 
           bool createPath (const DevicePtr_t& robot,
-              const ConstraintSetPtr_t& constraint,
+              const ConstraintPtr_t& constraint,
               const Configs_t& q, const Configs_t::iterator& last,
               const Bools_t& b, const Lengths_t& l,
               PathPtr_t& result) const;
 
           bool createPath (const DevicePtr_t& robot,
-              const ConstraintSetPtr_t& constraint,
+              const ConstraintPtr_t& constraint,
               const Datas_t& ds, const Datas_t::iterator& last,
               PathPtr_t& result) const;
 

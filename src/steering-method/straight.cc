@@ -28,9 +28,9 @@ namespace hpp {
       PathPtr_t Straight::impl_compute (ConfigurationIn_t q1, ConfigurationIn_t q2) const
       {
         value_type length = (*problem_.distance()) (q1, q2);
-        ConstraintSetPtr_t c;
+        ConstraintPtr_t c;
         if (constraints() && constraints()->configProjector ()) {
-          c = HPP_STATIC_PTR_CAST (ConstraintSet, constraints()->copy ());
+          c = constraints()->copy ();
           c->configProjector()->rightHandSideFromConfig (q1); 
           c->configProjector()->lineSearchType (ConfigProjector::Backtracking);
         } else {

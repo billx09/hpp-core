@@ -40,7 +40,7 @@ namespace hpp {
         ConfigurationIn_t init,
         ConfigurationIn_t end,
         interval_t interval,
-        ConstraintSetPtr_t constraints)
+        ConstraintPtr_t constraints)
     {
       return create(device->RnxSOnConfigSpace(), init, end, interval, constraints);
     }
@@ -61,7 +61,7 @@ namespace hpp {
 				vectorIn_t init,
 				vectorIn_t end,
 				interval_t interval,
-                                ConstraintSetPtr_t constraints) :
+                                ConstraintPtr_t constraints) :
       parent_t (interval, space->nq(), space->nv(), constraints),
       space_ (space),
       initial_ (init), end_ (end)
@@ -77,7 +77,7 @@ namespace hpp {
     }
 
     StraightPath::StraightPath (const StraightPath& path,
-				const ConstraintSetPtr_t& constraints) :
+				const ConstraintPtr_t& constraints) :
       parent_t (path, constraints), space_ (path.space_),
       initial_ (path.initial_), end_ (path.end_)
     {

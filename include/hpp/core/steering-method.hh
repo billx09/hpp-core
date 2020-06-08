@@ -78,13 +78,13 @@ namespace hpp {
       /// \{
 
       /// Set constraint set
-      void constraints (const ConstraintSetPtr_t& constraints)
+      void constraints (const ConstraintPtr_t& constraints)
       {
 	constraints_ = constraints;
       }
 
       /// Get constraint set
-      const ConstraintSetPtr_t& constraints () const
+      const ConstraintPtr_t& constraints () const
       {
 	return constraints_;
       }
@@ -102,10 +102,8 @@ namespace hpp {
       SteeringMethod (const SteeringMethod& other) :
         problem_ (other.problem_), constraints_ (), weak_ ()
 	{
-	  if (other.constraints_) {
-	    constraints_ = HPP_DYNAMIC_PTR_CAST (ConstraintSet,
-						 other.constraints_->copy ());
-	  }
+	  if (other.constraints_)
+	    constraints_ = other.constraints_->copy ();
 	}
       /// create a path between two configurations
       virtual PathPtr_t impl_compute (ConfigurationIn_t q1,
@@ -120,7 +118,7 @@ namespace hpp {
 
     private:
       /// Set of constraints to apply on the paths produced
-      ConstraintSetPtr_t constraints_;
+      ConstraintPtr_t constraints_;
       /// Weak pointer to itself
       SteeringMethodWkPtr_t weak_;
     }; // class SteeringMethod

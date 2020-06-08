@@ -39,7 +39,7 @@ namespace hpp {
         static HermitePtr_t create (const DevicePtr_t& device,
                                     ConfigurationIn_t init,
                                     ConfigurationIn_t end,
-                                    ConstraintSetPtr_t constraints)
+                                    ConstraintPtr_t constraints)
         {
           Hermite* ptr = new Hermite (device, init, end, constraints);
           HermitePtr_t shPtr (ptr);
@@ -61,7 +61,7 @@ namespace hpp {
         /// \param path path to copy
         /// \param constraints the path is subject to
         static HermitePtr_t createCopy
-          (const HermitePtr_t& path, const ConstraintSetPtr_t& constraints)
+          (const HermitePtr_t& path, const ConstraintPtr_t& constraints)
           {
             Hermite* ptr = new Hermite (*path, constraints);
             HermitePtr_t shPtr (ptr);
@@ -82,7 +82,7 @@ namespace hpp {
         ///
         /// \param constraints constraints to apply to the copy
         /// \pre *this should not have constraints.
-        virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+        virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
         {
           return createCopy (weak_.lock (), constraints);
         }
@@ -152,14 +152,14 @@ namespace hpp {
 
         /// Constructor with constraints
         Hermite (const DevicePtr_t& robot, ConfigurationIn_t init,
-              ConfigurationIn_t end, ConstraintSetPtr_t constraints);
+              ConfigurationIn_t end, ConstraintPtr_t constraints);
 
         /// Copy constructor
         Hermite (const Hermite& path);
 
         /// Copy constructor with constraints
         Hermite (const Hermite& path,
-              const ConstraintSetPtr_t& constraints);
+              const ConstraintPtr_t& constraints);
 
         void init (HermitePtr_t self);
 

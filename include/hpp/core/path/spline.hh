@@ -246,7 +246,7 @@ namespace hpp {
             return other;
           }
 
-          PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+          PathPtr_t copy (const ConstraintPtr_t& constraints) const
           {
             Ptr_t other (new Spline (*this, constraints));
             other->init(other);
@@ -257,7 +257,7 @@ namespace hpp {
 
           static Ptr_t create (const DevicePtr_t& robot,
               const interval_t& interval,
-              const ConstraintSetPtr_t& constraints)
+              const ConstraintPtr_t& constraints)
           {
             Ptr_t shPtr (new Spline(robot, interval, constraints));
             shPtr->init(shPtr);
@@ -280,7 +280,7 @@ namespace hpp {
         protected:
           Spline (const DevicePtr_t& robot,
               const interval_t& interval,
-              const ConstraintSetPtr_t& constraints)
+              const ConstraintPtr_t& constraints)
             : Path (interval, robot->configSize(), robot->numberDof(), constraints),
             parameterSize_ (robot->numberDof()),
             robot_ (robot),
@@ -295,7 +295,7 @@ namespace hpp {
 
           Spline (const Spline& path);
 
-          Spline (const Spline& path, const ConstraintSetPtr_t& constraints);
+          Spline (const Spline& path, const ConstraintPtr_t& constraints);
 
           void init (const Ptr_t& self) { Path::init(self); weak_ = self; }
 

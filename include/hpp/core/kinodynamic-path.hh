@@ -74,7 +74,7 @@ namespace hpp {
                                           ConfigurationIn_t init,
                                           ConfigurationIn_t end,
                                           value_type length,ConfigurationIn_t a1,ConfigurationIn_t t0,ConfigurationIn_t t1,ConfigurationIn_t tv,ConfigurationIn_t t2,ConfigurationIn_t vLim,
-                                          ConstraintSetPtr_t constraints)
+                                          ConstraintPtr_t constraints)
       {
         KinodynamicPath* ptr = new KinodynamicPath (device, init, end, length,a1,t0,t1,tv,t2,vLim,
                                                     constraints);
@@ -99,7 +99,7 @@ namespace hpp {
       /// \param path path to copy
       /// \param constraints the path is subject to
       static KinodynamicPathPtr_t createCopy
-      (const KinodynamicPathPtr_t& path, const ConstraintSetPtr_t& constraints)
+      (const KinodynamicPathPtr_t& path, const ConstraintPtr_t& constraints)
       {
         KinodynamicPath* ptr = new KinodynamicPath (*path, constraints);
         KinodynamicPathPtr_t shPtr (ptr);
@@ -121,7 +121,7 @@ namespace hpp {
       ///
       /// \param constraints constraints to apply to the copy
       /// \pre *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
       {
         return createCopy (weak_.lock (), constraints);
       }
@@ -161,14 +161,14 @@ namespace hpp {
       /// Constructor with constraints
       KinodynamicPath (const DevicePtr_t& robot, ConfigurationIn_t init,
                        ConfigurationIn_t end, value_type length,ConfigurationIn_t a1,ConfigurationIn_t t0, ConfigurationIn_t t1,ConfigurationIn_t tv,ConfigurationIn_t t2,ConfigurationIn_t vLim,
-                       ConstraintSetPtr_t constraints);
+                       ConstraintPtr_t constraints);
       
       /// Copy constructor
       KinodynamicPath (const KinodynamicPath& path);
       
       /// Copy constructor with constraints
       KinodynamicPath (const KinodynamicPath& path,
-                       const ConstraintSetPtr_t& constraints);
+                       const ConstraintPtr_t& constraints);
       
       void init (KinodynamicPathPtr_t self)
       {

@@ -60,7 +60,7 @@ namespace hpp {
        value_type curveLength, value_type pathLength, value_type curvature,
        size_type xyId, size_type rzId,
        const JointPtr_t rz, const std::vector<JointPtr_t> wheels,
-       const ConstraintSetPtr_t& constraints)
+       const ConstraintPtr_t& constraints)
       {
         ConstantCurvature* ptr;
         if (constraints)
@@ -87,7 +87,7 @@ namespace hpp {
 
       ConstantCurvaturePtr_t ConstantCurvature::createCopy
       (const ConstantCurvaturePtr_t& other,
-       const ConstraintSetPtr_t& constraints)
+       const ConstraintPtr_t& constraints)
       {
 	ConstantCurvature* ptr = new ConstantCurvature (*other, constraints);
 	ConstantCurvaturePtr_t shPtr (ptr);
@@ -115,7 +115,7 @@ namespace hpp {
        value_type curveLength, value_type pathLength, value_type curvature,
        size_type xyId, size_type rzId,
        const JointPtr_t rz, const std::vector<JointPtr_t> wheels,
-       ConstraintSetPtr_t constraints) :
+       ConstraintPtr_t constraints) :
         Path (std::make_pair (0., fabs (pathLength)), robot->configSize (),
               robot->numberDof (), constraints), robot_ (robot),
         initial_ (init), end_ (end),
@@ -169,7 +169,7 @@ namespace hpp {
       }
 
       ConstantCurvature::ConstantCurvature
-      (const ConstantCurvature& other, const ConstraintSetPtr_t& constraints) :
+      (const ConstantCurvature& other, const ConstraintPtr_t& constraints) :
         parent_t (other, constraints), robot_ (other.robot_),
         initial_ (other.initial_), end_ (other.end_),
         curveLength_ (other.curveLength_), curvature_ (other.curvature_),

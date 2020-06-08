@@ -192,18 +192,18 @@ namespace hpp {
       /// \name Constraints applicable to the robot
       /// \{
 
-      /// Set constraint set
-      /// \param constraints a set of constraints
+      /// Set constraints
+      /// \param constraints
       /// If problem contains a steering method, constraints are passed to
       /// the steering method.
-      void constraints (const ConstraintSetPtr_t& constraints)
+      void constraints (const ConstraintPtr_t& constraints)
       {
 	constraints_ = constraints;
 	if (steeringMethod_) steeringMethod_->constraints (constraints);
       }
 
       ///Get constraint set
-      const ConstraintSetPtr_t& constraints () const
+      const ConstraintPtr_t& constraints () const
       {
 	return constraints_;
       }
@@ -320,8 +320,8 @@ namespace hpp {
       PathProjectorPtr_t pathProjector_;
       /// List of obstacles
       ObjectStdVector_t collisionObstacles_;
-      /// Set of constraints applicable to the robot
-      ConstraintSetPtr_t constraints_;
+      /// Constraints applicable to the robot
+      ConstraintPtr_t constraints_;
       /// Configuration shooter
       ConfigurationShooterPtr_t configurationShooter_;
     }; // class Problem

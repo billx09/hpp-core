@@ -60,7 +60,7 @@ namespace hpp {
 					value_type rho,
 					size_type xyId, size_type rzId,
                                         const std::vector<JointPtr_t> wheels,
-					ConstraintSetPtr_t constraints)
+					ConstraintPtr_t constraints)
     {
       DubinsPath* ptr = new DubinsPath (device, init, end, extraLength, rho,
                                         xyId, rzId, wheels, constraints);
@@ -102,7 +102,7 @@ namespace hpp {
 			    ConfigurationIn_t end, value_type extraLength,
                             value_type rho, size_type xyId, size_type rzId,
                             const std::vector<JointPtr_t> wheels,
-			    ConstraintSetPtr_t constraints) :
+			    ConstraintPtr_t constraints) :
       parent_t (robot->configSize (), robot->numberDof ()),
       device_ (robot), initial_ (init), end_ (end), xyId_ (xyId), rzId_ (rzId),
       wheels_ (wheels), typeId_ (0), extraLength_ (extraLength), rho_ (rho)
@@ -128,7 +128,7 @@ namespace hpp {
     }
 
     DubinsPath::DubinsPath (const DubinsPath& path,
-			    const ConstraintSetPtr_t& constraints) :
+			    const ConstraintPtr_t& constraints) :
       parent_t (path, constraints), device_ (path.device_),
       initial_ (path.initial_), end_ (path.end_), xyId_ (path.xyId_),
       rzId_ (path.rzId_), wheels_ (path.wheels_), typeId_ (path.typeId_),
@@ -250,7 +250,7 @@ namespace hpp {
                                       rho_ * lengths_ [i] + extraL [i],
                                       curvature, xyId_, rzId_,
                                       device_->getJointAtConfigRank (rzId_),
-                                      wheels_, ConstraintSetPtr_t ()));
+                                      wheels_, ConstraintPtr_t ()));
         appendPath (path);
         q [i+1] = path->end ();
       }

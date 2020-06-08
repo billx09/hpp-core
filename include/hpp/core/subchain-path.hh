@@ -47,7 +47,7 @@ namespace hpp {
       ///
       /// \param constraints constraints to apply to the copy
       /// \pre *this should not have constraints.
-      virtual PathPtr_t copy (const ConstraintSetPtr_t& constraints) const
+      virtual PathPtr_t copy (const ConstraintPtr_t& constraints) const
       {
 	return createCopy (weak_.lock (), constraints);
       }
@@ -74,7 +74,7 @@ namespace hpp {
 
       static SubchainPathPtr_t
       createCopy (const SubchainPathPtr_t& path,
-		  const ConstraintSetPtr_t& constraints)
+		  const ConstraintPtr_t& constraints)
       {
 	SubchainPath* ptr = new SubchainPath (*path, constraints);
 	SubchainPathPtr_t shPtr (ptr);
@@ -145,7 +145,7 @@ namespace hpp {
       }
 
       SubchainPath (const SubchainPath& path,
-		     const ConstraintSetPtr_t& constraints) :
+		     const ConstraintPtr_t& constraints) :
 	Path (path, constraints), original_ (path.original_),
 	configView_ (path.configView_), weak_ ()
       {
