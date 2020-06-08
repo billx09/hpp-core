@@ -16,10 +16,12 @@
 // hpp-core  If not, see
 // <http://www.gnu.org/licenses/>.
 
-#include <hpp/core/constraint-set.hh>
+#include <hpp/core/constraint.hh>
 
 #include <boost/serialization/weak_ptr.hpp>
 #include <hpp/util/serialization.hh>
+
+#include <hpp/core/config-projector.hh>
 
 namespace hpp {
   namespace core {
@@ -27,6 +29,12 @@ namespace hpp {
     {
       return impl_compute (configuration);
     }
+
+    ConfigProjectorPtr_t Constraint::configProjector () const
+    {
+      return HPP_DYNAMIC_PTR_CAST(ConfigProjector, weak_.lock());
+    }
+
 
     template<class Archive>
     void Constraint::serialize(Archive & ar, const unsigned int version)

@@ -60,6 +60,8 @@ namespace hpp {
       ///         on implementations
       virtual bool isSatisfied (ConfigurationIn_t config, vector_t& error) = 0;
 
+      virtual ConfigProjectorPtr_t configProjector () const;
+
       /// return shared pointer to copy
       virtual ConstraintPtr_t copy () const = 0;
 
