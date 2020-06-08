@@ -87,7 +87,7 @@ namespace hpp {
 
     void RelativeMotion::fromConstraint (matrix_type& matrix,
         const DevicePtr_t& robot,
-        const ConstraintSetPtr_t& c)
+        const ConstraintPtr_t& c)
     {
       using constraints::Transformation;
       using constraints::RelativeTransformation;

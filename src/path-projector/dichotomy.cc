@@ -72,7 +72,7 @@ namespace hpp {
       bool Dichotomy::applyToStraightPath (const StraightPathPtr_t& path,
 					   PathPtr_t& projection) const
       {
-        ConstraintSetPtr_t constraints = path->constraints ();
+        ConstraintPtr_t constraints = path->constraints ();
         const ConfigProjectorPtr_t& cp = constraints->configProjector ();
         core::interval_t timeRange = path->timeRange ();
         const Configuration_t& q1 = path->initial ();

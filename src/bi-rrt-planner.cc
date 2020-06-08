@@ -71,7 +71,7 @@ namespace hpp {
     PathPtr_t BiRRTPlanner::extendInternal (const SteeringMethodPtr_t& sm, Configuration_t& qProj_, const NodePtr_t& near,
                     const Configuration_t& target, bool reverse)
     {
-        const ConstraintSetPtr_t& constraints (sm->constraints ());
+        const ConstraintPtr_t& constraints (sm->constraints ());
         if (constraints)
         {
             ConfigProjectorPtr_t configProjector (constraints->configProjector ());

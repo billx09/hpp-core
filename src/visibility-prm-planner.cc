@@ -107,7 +107,7 @@ namespace hpp {
     void VisibilityPrmPlanner::applyConstraints (const Configuration_t& qFrom,
         const Configuration_t& qTo, Configuration_t& qout)
     {
-      ConstraintSetPtr_t constraints (problem ().constraints ());
+      ConstraintPtr_t constraints (problem ().constraints ());
       if (constraints) {
 	ConfigProjectorPtr_t configProjector (constraints->configProjector ());
 	if (configProjector) {

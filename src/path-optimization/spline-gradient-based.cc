@@ -191,7 +191,7 @@ namespace hpp {
       void SplineGradientBased<_PB, _SO>::addProblemConstraintOnPath
       (const PathPtr_t& path, const size_type& idxSpline, const SplinePtr_t& spline, LinearConstraint& lc, SplineOptimizationData& sod) const
       {
-        ConstraintSetPtr_t cs = path->constraints();
+        ConstraintPtr_t cs = path->constraints();
         if (cs) {
           ConfigProjectorPtr_t cp = cs->configProjector();
           if (cp) {

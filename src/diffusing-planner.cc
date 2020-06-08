@@ -96,7 +96,7 @@ namespace hpp {
 					const Configuration_t& target)
     {
       const SteeringMethodPtr_t& sm (problem ().steeringMethod ());
-      const ConstraintSetPtr_t& constraints (sm->constraints ());
+      const ConstraintPtr_t& constraints (sm->constraints ());
       if (constraints) {
 	ConfigProjectorPtr_t configProjector (constraints->configProjector ());
 	if (configProjector) {

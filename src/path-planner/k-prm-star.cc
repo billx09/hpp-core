@@ -101,7 +101,7 @@ namespace hpp {
 	ConfigValidationsPtr_t configValidations
           (problem ().configValidations ());
 	// Get the constraints the robot is subject to
-	ConstraintSetPtr_t constraints (problem ().constraints ());
+	ConstraintPtr_t constraints (problem ().constraints ());
         // Get the problem shooter
         ConfigurationShooterPtr_t shooter = problem().configurationShooter();
 	// Get roadmap
@@ -159,7 +159,7 @@ namespace hpp {
 	// Retrieve the steering method
 	SteeringMethodPtr_t sm (problem ().steeringMethod ());
 	// Retrieve the constraints the robot is subject to
-	ConstraintSetPtr_t constraints (problem ().constraints ());
+	ConstraintPtr_t constraints (problem ().constraints ());
         // Retrieve path projector
         PathProjectorPtr_t pathProjector (problem ().pathProjector ());
 

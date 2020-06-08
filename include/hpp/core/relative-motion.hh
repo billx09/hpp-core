@@ -60,7 +60,7 @@ namespace hpp {
       static matrix_type matrix (const DevicePtr_t& robot);
 
       /// Fill the relative motion matrix with information extracted from the
-      /// provided ConstraintSet.
+      /// provided Constraint.
       /// \note Only LockedJoint and RelativeTransformation of dimension 6
       ///       are currently taken into account.
       /// \todo LockedJoint always has a non-constant RHS which means it will
@@ -69,7 +69,7 @@ namespace hpp {
       static void fromConstraint (
           matrix_type& matrix,
           const DevicePtr_t& robot,
-          const ConstraintSetPtr_t& constraint);
+          const ConstraintPtr_t& constraint);
 
       /// Set the relative motion between two joints
       ///
