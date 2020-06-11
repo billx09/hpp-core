@@ -18,4 +18,6 @@ INCLUDE(hpp-core-plugin)
 
 HPP_ADD_PLUGIN(spline-gradient-based
   SOURCES spline-gradient-based.cc
-  LINK_DEPENDENCIES ${PROJECT_NAME} ${PROJECT_NAME}-gpl)
+  LINK_DEPENDENCIES PUBLIC ${PROJECT_NAME} ${PROJECT_NAME}-gpl)
+
+PROJECT_INSTALL_COMPONENT(spline-gradient-based)
